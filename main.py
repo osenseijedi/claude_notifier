@@ -6,6 +6,7 @@ import time
 
 # Initialize the pygame mixer
 pygame.mixer.init()
+import os;
 
 
 def main(command: str):
@@ -31,9 +32,9 @@ def main(command: str):
                 data = command.encode()
                 ser.write(data)
                 ser.flush()
-                print(f"Sent: {data.decode()}")
+                script_path = os.path.abspath(os.path.dirname(__file__))
 
-                sound = pygame.mixer.Sound(f'E:/Projects/ProgProject/__CLAUDE__/macropad_notifier/{command}_2.wav')
+                sound = pygame.mixer.Sound(f'{script_path}/{command}_2.wav')
 
                 sound.play()
                 time.sleep(sound.get_length())
